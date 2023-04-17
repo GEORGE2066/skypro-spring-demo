@@ -1,4 +1,4 @@
-package pro.sky.skyprospringdemo.domain;
+package pro.sky.skyprospringdemo1.domain;
 
 import java.util.Objects;
 
