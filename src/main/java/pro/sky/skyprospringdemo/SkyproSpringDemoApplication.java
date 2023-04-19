@@ -1,4 +1,4 @@
-package pro.sky.skyprospringdemo1;
+package pro.sky.skyprospringdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package pro.sky.skyprospringdemo1.service;
+package pro.sky.skyprospringdemo.service;
 
-import pro.sky.skyprospringdemo1.domain.Employee;
+import pro.sky.skyprospringdemo.domain.Employee;
 
 import java.util.Collection;
 

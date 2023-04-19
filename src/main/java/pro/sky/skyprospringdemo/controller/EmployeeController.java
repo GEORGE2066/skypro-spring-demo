@@ -1,12 +1,12 @@
-package pro.sky.skyprospringdemo1.controller;
+package pro.sky.skyprospringdemo.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.skyprospringdemo1.domain.Employee;
-import pro.sky.skyprospringdemo1.service.EmployeeService;
+import pro.sky.skyprospringdemo.domain.Employee;
+import pro.sky.skyprospringdemo.service.EmployeeService;
 
 import java.util.Collection;
 

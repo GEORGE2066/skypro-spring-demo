@@ -1,9 +1,9 @@
-package pro.sky.skyprospringdemo1.service;
+package pro.sky.skyprospringdemo.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.skyprospringdemo1.domain.Employee;
-import pro.sky.skyprospringdemo1.exception.EmployeeAlreadyAddedException;
-import pro.sky.skyprospringdemo1.exception.EmployeeNotFoundException;
+import pro.sky.skyprospringdemo.domain.Employee;
+import pro.sky.skyprospringdemo.exception.EmployeeAlreadyAddedException;
+import pro.sky.skyprospringdemo.exception.EmployeeNotFoundException;
 
 import java.util.*;
 
