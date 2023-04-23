@@ -8,6 +8,11 @@ import pro.sky.skyprospringdemo.domain.Employee;
 import pro.sky.skyprospringdemo.service.DepartmentService;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
 
 @RestController
 @RequestMapping(value = "/department")
@@ -34,5 +39,16 @@ public class DepartmentController {
             return departmentService.printAllEmployees();
         }
         return departmentService.printAllDepartment(departmentId);
+    }
+
+    @GetMapping(path = "/groupingByDepartment")
+    public Collection<Employee> printGroupingByDepartment(@RequestParam int department, @RequestParam List string) {
+        if (department == 0) {
+            return null;
+        } else {
+            Map<Integer, List<Employee>> map1 = (Map<Integer, List<Employee>>) string.stream()
+                    .collect(Collectors.groupingBy(Employee::getFirstName));
+            return (Collection<Employee>) map1;
+        }
     }
 }
