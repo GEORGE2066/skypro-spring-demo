@@ -1,17 +1,19 @@
 package pro.sky.skyprospringdemo.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Employee {
-    private String firstName;
-    private String lastName;
-    private double salary;
+    private final String firstName;
+    private final String lastName;
+    private BigDecimal salary;
     private int department;
 
-    public Employee(String firstName, String lastName, double salary, int department) {
+    public Employee(String firstName, String lastName, BigDecimal salary, int department) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
+        this.salary = new BigDecimal(String.valueOf(salary));
         this.department = department;
     }
 
@@ -23,18 +25,16 @@ public class Employee {
         return lastName;
     }
 
-    public double getSalary() {
-        return salary;
+    public BigDecimal getSalary() {
+        return salary.setScale(2, RoundingMode.HALF_UP);
     }
 
-    public int getDepartment() {
-        return department;
-    }
+    public int getDepartment() {return department;}
 
     @Override
     public String toString() {
         return String.format(
-                "FIO: %s; Oklad: %.2f; Department: %d",
+                "ФИО - %s; Оклад - %.2f; Отдел - %d",
                 firstName + " " + lastName,
                 salary,
                 department
