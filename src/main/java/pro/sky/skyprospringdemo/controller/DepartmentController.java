@@ -42,13 +42,9 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/groupingByDepartment")
-    public Collection<Employee> printGroupingByDepartment(@RequestParam int department, @RequestParam List string) {
-        if (department == 0) {
-            return null;
-        } else {
+    public Collection<Employee> printGroupingByDepartment() {
             Map<Integer, List<Employee>> map1 = (Map<Integer, List<Employee>>) string.stream()
                     .collect(Collectors.groupingBy(Employee::getFirstName));
             return (Collection<Employee>) map1;
-        }
     }
 }
