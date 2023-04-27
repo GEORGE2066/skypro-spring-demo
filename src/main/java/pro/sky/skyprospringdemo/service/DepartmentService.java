@@ -6,36 +6,15 @@ import pro.sky.skyprospringdemo.domain.Employee;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 @Service
-public class DepartmentService {
-    private final EmployeeServiceImpl employeeServiceImpl;
+public interface DepartmentService {
+    Employee findMaxSalaryFromDepartment(int department);
 
-    public DepartmentService(EmployeeServiceImpl employeeServiceImpl) {
-        this.employeeServiceImpl = employeeServiceImpl;
-    }
+    Employee findMinSalaryFromDepartment(int department);
 
-    public Employee findEmployeeWithMinSalary(int department) {
-        return employeeServiceImpl.getEmployees().values().stream()
-                .filter(employee -> employee.getDepartment() == department)
-                .min(Comparator.comparing(Employee::getSalary)).orElse(null);
-    }
+    Collection<Employee> printAllFromDepartment(int department);
 
-    public Employee findEmployeeWithMaxSalary(int department) {
-        return employeeServiceImpl.getEmployees().values().stream()
-                .filter(employee -> employee.getDepartment() == department)
-                .max(Comparator.comparing(Employee::getSalary)).orElse(null);
-    }
-
-    public Collection<Employee> printAllDepartment(Integer department) {
-        return employeeServiceImpl.getEmployees().values().stream()
-                .filter(employee -> employee.getDepartment() == department)
-                .toList();
-    }
-
-    public Collection<Employee> printAllEmployees() {
-        return employeeServiceImpl.getEmployees().values().stream()
-                .sorted(Comparator.comparing(Employee::getDepartment))
-                .collect(Collectors.toList());
-    }
+    Collection<Employee> printAllSortedByDepartment();
 }

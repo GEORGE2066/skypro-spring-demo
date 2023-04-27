@@ -1,38 +1,37 @@
 package pro.sky.skyprospringdemo.controller;
 
+import pro.sky.skyprospringdemo.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Employee;
-import pro.sky.skyprospringdemo.service.DepartmentService;
-
 import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/department")
 public class DepartmentController {
-    private final DepartmentService departmentService;
+    private final DepartmentService depService;
 
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
-
-    @GetMapping(path = "/min-salary")
-    public Employee findMinSalaryDepartment(@RequestParam int departmentId) {
-        return departmentService.findEmployeeWithMinSalary(departmentId);
+    public DepartmentController(DepartmentService depService) {
+        this.depService = depService;
     }
 
     @GetMapping(path = "/max-salary")
-    public Employee findMaxSalaryDepartment(@RequestParam int departmentId) {
-        return departmentService.findEmployeeWithMaxSalary(departmentId);
+    public Employee findMaxSalaryFromDepartment(@RequestParam int departmentId) {
+        return depService.findMaxSalaryFromDepartment(departmentId);
+    }
+
+    @GetMapping(path = "/min-salary")
+    public Employee findMinSalaryFromDepartment(@RequestParam int departmentId) {
+        return depService.findMinSalaryFromDepartment(departmentId);
     }
 
     @GetMapping(path = "/all")
-    public Collection<Employee> printAllDepartment(@RequestParam(required = false) Integer departmentId) {
+    public Collection<Employee> printAllFromDepartment(@RequestParam(required = false) Integer departmentId) {
         if (departmentId == null) {
-            return departmentService.printAllEmployees();
+            return depService.printAllSortedByDepartment();
         }
-        return departmentService.printAllDepartment(departmentId);
+        return depService.printAllFromDepartment(departmentId);
     }
 }
