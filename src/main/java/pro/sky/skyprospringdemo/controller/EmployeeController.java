@@ -44,7 +44,7 @@ public class EmployeeController {
         return emplService.find(firstName, lastName, salary, department);
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public Collection<Employee> printAll() {
         return emplService.printAll();
     }

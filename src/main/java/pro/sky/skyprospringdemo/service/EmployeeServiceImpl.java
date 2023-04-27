@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Employee add(String firstName, String lastName, BigDecimal salary, int department) {
         Employee employee = new Employee(firstName, lastName, salary, department);
-        if (employees.containsKey(getKey(employee))) {
+        if (employees.containsKey(getKey(employee)) || employee.getFullName().isEmpty()) {
             throw new EmployeeAlreadyAddedException();
         }
         employees.put(getKey(employee), employee);

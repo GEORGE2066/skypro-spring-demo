@@ -29,7 +29,13 @@ public class Employee {
         return salary.setScale(2, RoundingMode.HALF_UP);
     }
 
-    public int getDepartment() {return department;}
+    public int getDepartment() {
+        return department;
+    }
+
+    public String getFullName() {
+        return getFirstName() + getLastName();
+    }
 
     @Override
     public String toString() {
